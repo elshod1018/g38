@@ -1,4 +1,4 @@
-package wildcard_types;
+package wildcard_types.test;
 
 import java.io.Serializable;
 import java.util.*;
@@ -29,8 +29,7 @@ public class Main {
     }
 
     void printCollection4(Collection<? extends Number> c) {
-        Collection<?> c2 = new ArrayList<String>();
-        for (Object e : c) {
+        for (Number e : c) {
             System.out.println(e);
         }
     }
