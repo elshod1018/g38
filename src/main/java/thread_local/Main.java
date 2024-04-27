@@ -8,23 +8,42 @@ import java.util.concurrent.Executors;
 
 public class Main {
     public static void main(String[] args) {
+//        withThreadLocal();
         int nThreads = Runtime.getRuntime().availableProcessors();
         ExecutorService executorService = Executors.newFixedThreadPool(nThreads);
-//thread-5 -> new Simp() for 6
-// thread-6 -> new Simp() for 6
-        ThreadLocal<SimpleDateFormat> simpleDateFormatThreadLocal = ThreadLocal.withInitial(() -> new SimpleDateFormat("ddMMyyyy"));
-
-        for (int i = 0; i < 1000; i++) {
+        //thread-5 -> new Simp() for 6
+        // thread-6 -> new Simp() for 6
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("ddMMyyyy");
+        for (int i = 0; i < 10; i++) {
             executorService.execute(() -> {
                 try {
-                    Date parse = simpleDateFormatThreadLocal.get().parse("01012024");
-                    System.out.println(parse);
+                    Date parse = simpleDateFormat.parse("01012024");
+                    System.out.println(System.identityHashCode(simpleDateFormat) + " -> " + parse + " -> " + Thread.currentThread());
+                } catch (ParseException e) {
+
+                }
+            });
+        }
+    }
+
+    private static void withThreadLocal() {
+        int nThreads = Runtime.getRuntime().availableProcessors();
+        ExecutorService executorService = Executors.newFixedThreadPool(nThreads);
+        //thread-5 -> new Simp() for 6
+        // thread-6 -> new Simp() for 6
+        ThreadLocal<SimpleDateFormat> simpleDateFormatThreadLocal =
+                ThreadLocal.withInitial(() -> new SimpleDateFormat("ddMMyyyy"));
+        for (int i = 0; i < 10; i++) {
+            executorService.execute(() -> {
+                try {
+                    SimpleDateFormat simpleDateFormat = simpleDateFormatThreadLocal.get();
+                    Date parse = simpleDateFormat.parse("01012024");
+                    System.out.println(System.identityHashCode(simpleDateFormat) + " -> " + parse + " -> " + Thread.currentThread());
 
                 } catch (ParseException e) {
 
                 }
             });
         }
-
     }
 }
