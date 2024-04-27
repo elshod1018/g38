@@ -4,6 +4,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class ReadFromRussian {
+
     public static void main(String[] args) {
         ResourceBundle bundle = ResourceBundle.getBundle("messages", new Locale("ru", "RU"));
 
