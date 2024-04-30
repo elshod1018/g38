@@ -1,4 +1,4 @@
-package javadoc;
+package javadoc.test;
 
 public class MyClass {
 }

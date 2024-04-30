@@ -1,11 +1,9 @@
-package javadoc;
-
-import java.util.List;
+package javadoc.test;
 
 /**
  * @author Elshod Nuriddinov
  * @version 1.0
- * @see javadoc.MyClass
+ * @see MyClass
  */
 public class User {
     /**
