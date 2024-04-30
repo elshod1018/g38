@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"javadoc","c":"CustomList","l":"CustomList()","u":"%3Cinit%3E()"},{"p":"javadoc","c":"CustomList","l":"deprecated()"},{"p":"javadoc","c":"CustomList","l":"test(String)","u":"test(java.lang.String)"}];updateSearchResults();
